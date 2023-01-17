@@ -13,3 +13,4 @@ node {
     stage('Package') { 
         sh "${mvnHome}/bin/mvn package" 
     } 
+ }
