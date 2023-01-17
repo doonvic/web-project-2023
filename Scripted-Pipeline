@@ -1,0 +1,15 @@
+node {  
+    def mvnHome = tool name: 'maven_home', type: 'maven'
+    stage('Build') { 
+       git branch: 'main', credentialsId: 'Git-Credentials', 
+       url: 'https://github.com/doonvic/web-project-2023.git' 
+    }
+    stage('Compile') { 
+        sh "${mvnHome}/bin/mvn compile" 
+    }
+    stage('Test') { 
+        sh "${mvnHome}/bin/mvn test" 
+    }
+    stage('Package') { 
+        sh "${mvnHome}/bin/mvn package" 
+    } 
